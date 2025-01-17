@@ -31,8 +31,8 @@ class ChemicalDataIngestion:
         #database connectivity parameters
         self.db_params = {
             'database': 'mlchem',
-            'user': os.getenv('DB_USER', 'postgres'),
-            'password': os.getenv('DB_PASSWORD', 'admin@123'),
+            'user': os.getenv('DB_USER'),
+            'password': os.getenv('DB_PASSWORD'),
             'host': 'localhost',
             'port': '5432'
         }
@@ -40,7 +40,7 @@ class ChemicalDataIngestion:
     def get_database_connection(self):
         """Create and return database connection engine"""
         try:
-            encoded_password = "admin%40123" 
+            encoded_password = os.getenv('DB_PASSWORD') 
             connection_string = f"postgresql+psycopg2://{self.db_params['user']}:{encoded_password}@{self.db_params['host']}:{self.db_params['port']}/{self.db_params['database']}"
             return create_engine(connection_string)
         except Exception as e:
