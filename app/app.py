@@ -9,8 +9,21 @@ import joblib
 import google.generativeai as genai
 from rdkit.Chem import Draw
 import matplotlib.pyplot as plt
+from dotenv import load_dotenv
+import os
 
-GEMINI_API_KEY = "AIzaSyC4b_PXAIu62ePfdivmOUx5MUCdL0eNcFw"
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve Gemini API Key from environment variable
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+# Check if the API key is set correctly
+if not GEMINI_API_KEY:
+    st.error("Gemini API Key not found. Please check your .env file.")
+    raise ValueError("Gemini API Key not found in environment variables.")
+
+# Configure Gemini API
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
@@ -146,8 +159,6 @@ if smiles_input:
                 st.image(img, use_container_width=True)
             else:
                 st.error("Failed to generate 2D structure.")
-
-
         
     except Exception as e:
         st.error(f"Error: {str(e)}")
