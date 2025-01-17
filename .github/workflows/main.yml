@@ -23,10 +23,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+          pip install pytest  # Ensure pytest is installed
+
       - name: Run unit tests
         run: pytest tests/test_inferencing.py
-        
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
@@ -58,7 +59,7 @@ jobs:
       - name: Deploy to Render
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}  # Add Gemini API secret here
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           curl -X POST "https://api.render.com/v1/services/srv-clj8b0gph6c73387s0t0/deploys" \
           -H "Authorization: Bearer $RENDER_API_KEY" || exit 1
