@@ -8,6 +8,7 @@ This project is a **Molecular Effectiveness Prediction App** that predicts the *
 - 🖼️ Generates **2D molecular structure visualization**.
 - 🔬 Converts **molecular names to SMILES** using Gemini AI.
 - ⚡ **CI/CD pipeline** implemented for automated deployment.
+- ✅ Database: PostgreSQL for data ingestion 🗄️
 - 📊 **Prefect for pipeline orchestration**.
 - 📈 **MLflow for experiment tracking and model management**.
 - 🚀 **Deployed on Render** for real-time accessibility.
@@ -15,6 +16,7 @@ This project is a **Molecular Effectiveness Prediction App** that predicts the *
 ## 🏗️ Tech Stack
 - **Frontend:** Streamlit
 - **Backend:** Python (FastAPI for API integration)
+- **Database:** PostgreSQL 
 - **Machine Learning:** RDKit, Scikit-learn, NumPy, XGBoost, etc
 - **Orchestration:** Prefect
 - **Experiment Tracking:** MLflow
