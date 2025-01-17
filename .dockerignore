@@ -1,0 +1,16 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__
+
+# Ignore virtual environment
+venv/
+
+# Ignore Git files
+.git/
+.gitignore
+
+# Ignore local development files (e.g., Jupyter notebooks, logs, etc.)
+*.ipynb
+*.log
+*.sqlite
