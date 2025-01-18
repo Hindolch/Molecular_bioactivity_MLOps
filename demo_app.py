@@ -9,13 +9,16 @@ import joblib
 import google.generativeai as genai
 from rdkit.Chem import Draw
 import matplotlib.pyplot as plt
+import os
 
-GEMINI_API_KEY = "AIzaSyC4b_PXAIu62ePfdivmOUx5MUCdL0eNcFw"
+
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Load pre-trained model
-loaded_model = joblib.load("/home/kenzi/molecular prediction mlops/Artifacts/model.pkl")
+loaded_model = joblib.load("tests/Artifacts/model.pkl")
 
 # Function to convert molecule name to SMILES using Gemini API
 def molecule_to_smiles(name: str):
